@@ -1,0 +1,5 @@
+Hello!
+
+My name is Matt Greenwood. I'm a 30-something software engineer from the beautiful Adirondack Mountain area in Upstate New York. The majority of my coding experience is in C# working in Unity Game Engine where I've made ~10 demo style VR video games serving both companies and clients.\n 
+I very much enjoy the process of creating software; the continuous problem solving, the on-the-fly learning, and the never ending optimizations make every line of code feel like a game in itself. \n
+I've recently started learning Golang, a language I'm slowly falling in love with. I'm making this website to put the things I'm learning to practice. If you're a recruiter or a company representative looking to discuss a developer position, my contact information can be found in my resume below as well as links to both LinkedIn and Github. Hey, thanks for reading my bio :)

@@ -1,0 +1,16 @@
+<link rel="stylesheet" type="text/css" href="./css/styles.css">
+{{template "header"}}
+
+<div>
+<h1 style="margin-right: 40%"> A little about me</h1>
+<div class="bio-container">
+    <div class="bio">
+    <br/>
+        {{ range $section := .bio }}
+            <div class="bio-text">{{$section}}<br/><br/></div>
+        {{end}}
+    </div>
+</div>
+<div class="pdf">
+    <iframe src="https://drive.google.com/file/d/1MlS6Dy4Qlzadoa5E1OdGUG5IGehWvlMT/preview" width="840" height="1060" allow="autoplay"></iframe>
+</div>

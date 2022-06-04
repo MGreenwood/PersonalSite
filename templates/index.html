@@ -1,0 +1,18 @@
+<link rel="stylesheet" type="text/css" href="./css/styles.css">
+{{template "header"}}
+
+{{range $post := .blog_posts}}
+    <div style="margin:40px 0px">
+        <div>
+            <div class="blog-post-title">
+                {{$post.Title}}
+            </div>
+            <div class="blog-post-timestamp">
+                {{$post.Timestamp}} <br/><br/>
+            </div>
+        </div>
+        <div class="blog-post">
+            {{$post.Body}}
+        </div>
+    </div>
+{{end}}
