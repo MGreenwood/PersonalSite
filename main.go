@@ -97,7 +97,7 @@ func PostBlog(title string, body string) {
 	// TODO post to db or whatever storage choice
 	// can prob just store as json locally
 
-	posts = append(posts, blog_post{title, body, time.Now().Format("Jan _2 15:04:05")})
+	posts = append(posts, blog_post{title, body, time.Now().Format("Monday Jan 2 2006")})
 
 	fmt.Println("Blog post received")
 	fmt.Printf("Now showing %d posts", len(posts))

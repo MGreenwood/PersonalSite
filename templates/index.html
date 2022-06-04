@@ -2,7 +2,7 @@
 {{template "header"}}
 
 {{range $post := .blog_posts}}
-    <div style="margin:40px 0px">
+    <div class="blog-container">
         <div>
             <div class="blog-post-title">
                 {{$post.Title}}
@@ -16,3 +16,26 @@
         </div>
     </div>
 {{end}}
+
+<button onclick="topFunction()" id="goto-top-button" title="Go to top">Top</button>
+<script>
+    //Get the button
+    var mybutton = document.getElementById("goto-top-button");
+
+    // When the user scrolls down 300px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+            mybutton.style.display = "block";
+        } else {
+            mybutton.style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>

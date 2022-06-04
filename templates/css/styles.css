@@ -1,19 +1,34 @@
 body{
-    background-color: #2b3335;
+    background-color: #e3eef1;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 0px;
 }
 
 a {
     cursor: pointer;
     text-decoration: none;
-    padding: 0px 10px;
-    background-color: #73a9b394; 
 }
-
 
 .nav {
     display: flex;
     flex-direction: row-reverse;
+    background-color: #92D7CA;
+    width: 100%;
+    box-shadow: 0px 0px 50px black;
+    border-bottom: double 2px rgba(0, 0, 0, 0.39);
+    margin-bottom: 8%;
+}
+
+.nav-button {
+    font-weight: 400;
+    font-size: 20px;
+    text-shadow: 1px 1px 2px #26373a88;
+    position: relative;
+    line-height: 3.5rem;
+    display: block;
+    padding: 0px 40px;
+    border-left: solid rgba(0, 0, 0, 0.10) 1px;
+    background-color: transparent;
 }
 
 h1{
@@ -44,31 +59,59 @@ h1{
     justify-content: center;
 }
 
-.nav-button {
-    font-weight: 400;
-    font-size: 20px;
-    text-shadow: 2px 2px 3px #26373a;
-    line-height: 4rem;
-    color: #92D7CA;
-    position: relative;
-    display: block;
+
+.blog-container {
+    display: flex;
+    vertical-align: top;
+    align-content: center;
+    flex-direction: column;
+    margin: 30px 30% 0 5%;
+    max-width: 900px;
+    min-width: 20px;
 }
 
 .blog-post {
-    background-color: #92D7CA;
+    background-color: #99e2d5;
     font-size: 20px;
-    font-weight: 600;
-    margin: 20px 20%
+    font-weight: 400;
+    padding-bottom: 20px;
+    border-radius: 0 0 5px 30px;
+    padding: 5px 10px 10px 35px;
+    word-wrap: break-word;
+    box-shadow: 4px 0px 25px black;
 }
 
 .blog-post-title {
     background-color: #92D7CA;
     font-size: 26px;
     font-weight: 800;
+    border-radius: 5px 30px 0 0;
+    padding: 5px 10px 10px 10px;
 }
 
 .blog-post-timestamp {
     background-color: #92D7CA;
     font-size: 16px;
     font-weight: 200;
+    padding: 0 10px 10px 10px;
+}
+
+#goto-top-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: #92D7CA;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 4px;
+}
+
+#goto-top-button:hover {
+  background-color: #537a73;
 }
