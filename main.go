@@ -23,6 +23,12 @@ type blog_post struct {
 	Title     string
 	Body      string
 	Timestamp string
+	Picture   image
+}
+type image struct {
+	Link   string
+	Width  string
+	Height string
 }
 
 func main() {
@@ -73,9 +79,12 @@ func index(c *gin.Context) {
 
 func submit(c *gin.Context) {
 	type post_structure struct {
-		TITLE string `json:"title" binding:"required"`
-		BODY  string `json:"body" binding:"required"`
-		PASS  string `json:"password" binding:"required"`
+		TITLE    string `json:"title" binding:"required"`
+		BODY     string `json:"body" binding:"required"`
+		PASS     string `json:"password" binding:"required"`
+		IMG_LINK string `json:"imageLink"`
+		IMG_WID  string `json:"imageWidth"`
+		IMG_HIG  string `json:"imageHeight"`
 	}
 
 	var content post_structure
@@ -83,24 +92,25 @@ func submit(c *gin.Context) {
 		c.JSON(http.StatusBadRequest, gin.H{"status": "Could not bind data"})
 		return
 	}
+
 	if content.PASS == password {
-		PostBlog(content.TITLE, content.BODY)
+		image_in := image{content.IMG_LINK, content.IMG_WID, content.IMG_HIG}
+		PostBlog(content.TITLE, content.BODY, image_in)
 		c.JSON(http.StatusOK, gin.H{"status": "post successfully uploaded"})
 	} else { // error binding the query to type
 		c.JSON(http.StatusForbidden, "Wrong password")
 		return
 	}
-
 }
 
-func PostBlog(title string, body string) {
+func PostBlog(title string, body string, pic image) {
 	// TODO post to db or whatever storage choice
 	// can prob just store as json locally
+	new_post := blog_post{title, body, time.Now().Format("Monday Jan 2 2006"), pic}
+	fmt.Println(pic)
+	posts = append(posts, new_post)
 
-	posts = append(posts, blog_post{title, body, time.Now().Format("Monday Jan 2 2006")})
-
-	fmt.Println("Blog post received")
-	fmt.Printf("Now showing %d posts", len(posts))
+	fmt.Printf("Blog post received. Now showing %d posts\n", len(posts))
 }
 
 func loadAbout() {

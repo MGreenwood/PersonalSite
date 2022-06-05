@@ -20,9 +20,9 @@ a {
 }
 
 .nav-button {
-    font-weight: 400;
+    color: black;
+    font-weight: bold;
     font-size: 20px;
-    text-shadow: 1px 1px 2px #26373a88;
     position: relative;
     line-height: 3.5rem;
     display: block;
@@ -30,10 +30,13 @@ a {
     border-left: solid rgba(0, 0, 0, 0.10) 1px;
     background-color: transparent;
 }
+.nav-button:hover {
+    background-color: #537a7370;
+}
 
 h1{
     text-align: center;
-    color: white;
+    color: black;
 }
 
 .bio-container {
@@ -51,7 +54,7 @@ h1{
 
 .bio-text {
     margin: 10px;
-    font-weight: 520;
+    font-weight: 550;
 }
 
 .pdf {
@@ -78,7 +81,7 @@ h1{
     border-radius: 0 0 5px 30px;
     padding: 5px 10px 10px 35px;
     word-wrap: break-word;
-    box-shadow: 4px 0px 25px black;
+    box-shadow: 4px 0px 25px rgba(0, 0, 0, 0.432);
 }
 
 .blog-post-title {
@@ -94,6 +97,16 @@ h1{
     font-size: 16px;
     font-weight: 200;
     padding: 0 10px 10px 10px;
+}
+
+.blog-post-image {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+}
+
+.blog-post-image:hover {
+    height:auto;
 }
 
 #goto-top-button {
