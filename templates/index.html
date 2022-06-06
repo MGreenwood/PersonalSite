@@ -10,9 +10,9 @@
             <div class="blog-post-timestamp">
                 {{$post.Timestamp}} <br/><br/>
             </div>
-            {{if $post.Picture.Link}}
+            {{if $post.Image}}
             <div>
-                <img class="blog-post-image" src={{$post.Picture.Link}} width={{$post.Picture.Width}} height={{$post.Picture.Height}}>
+                <img class="blog-post-image" src={{$post.Image}}>
             </div>
             {{end}}
         </div>
