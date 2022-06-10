@@ -1,4 +1,4 @@
-Hello!
+Hello!\n
 
 My name is Matt Greenwood. I'm a 30-something software engineer from the beautiful Adirondack Mountain area in Upstate New York. The majority of my coding experience is in C# working in Unity Game Engine where I've made ~10 demo style VR video games serving both companies and clients.\n 
 I very much enjoy the process of creating software; the continuous problem solving, the on-the-fly learning, and the never ending optimizations make every line of code feel like a game in itself. \n

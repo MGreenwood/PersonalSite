@@ -2,6 +2,7 @@ package database_handler
 
 import (
 	"database/sql"
+	"encoding/base64"
 	"fmt"
 	"os"
 
@@ -43,7 +44,7 @@ func RetrieveTopFive() []Post {
 	}
 	defer conn.Close()
 
-	statement := "select * from posts limit 5"
+	statement := "select * from posts order by id desc limit 5"
 	query, err := conn.Query(statement)
 	if err != nil {
 		fmt.Println(err)
@@ -52,10 +53,13 @@ func RetrieveTopFive() []Post {
 	posts := []Post{}
 	for query.Next() {
 		var r Post
-		err = query.Scan(&r.Title, &r.Timestamp, &r.Body, &r.Image)
+		var id int
+		err = query.Scan(&r.Title, &r.Timestamp, &r.Body, &r.Image, &id)
 		if err != nil {
 			fmt.Println(err)
 		}
+		decodedBody, _ := base64.URLEncoding.DecodeString(r.Body)
+		r.Body = string(decodedBody)
 		posts = append(posts, r)
 	}
 

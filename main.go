@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/base64"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -29,9 +30,7 @@ func main() {
 
 	// need to load past 5 blog posts here TODO
 	top_five := database_handler.RetrieveTopFive()
-	for _, post := range top_five {
-		posts = append(posts, post)
-	}
+	posts = append(posts, top_five...)
 
 	password = os.Getenv("BLOG_PASS")
 	if password == "" {
@@ -40,10 +39,13 @@ func main() {
 
 	// router setup
 	router := gin.Default()
-	router.SetTrustedProxies(nil)
+	//router.SetTrustedProxies(nil)
 	router.LoadHTMLGlob("./templates/*.html")
+
+	// load static folders
 	router.Static("/css", "./templates/css")
-	router.Static("/content", "./content/*.pdf")
+	router.Static("./content", "./content")
+
 	router.Use(favicon.New("favicon.ico")) // set favicon middleware
 
 	// routing
@@ -55,7 +57,7 @@ func main() {
 	router.POST("/api/post", submit)
 	// end routing
 
-	router.Run("localhost:8080")
+	router.Run(":8080")
 }
 
 func about(c *gin.Context) {
@@ -101,15 +103,17 @@ func submit(c *gin.Context) {
 func PostBlog(title string, body string, pic string) bool {
 	// TODO post to db or whatever storage choice
 	// can prob just store as json locally
-	new_post := database_handler.Post{title, time.Now().Format("Monday Jan 2 2006"), body, pic}
+	new_post := database_handler.Post{Title: title, Timestamp: time.Now().Format("Monday Jan 2 2006 3:04PM"),
+		Body: body, Image: pic}
 
-	err := database_handler.Add(title, new_post.Timestamp, body, pic)
+	err := database_handler.Add(title, new_post.Timestamp, base64.RawURLEncoding.EncodeToString([]byte(body)), pic)
 	if err != nil {
 		fmt.Println(err)
 		return false
 	}
 
-	posts = append(posts, new_post)
+	// new post goes at head to display in order of most recent
+	posts = append([]database_handler.Post{new_post}, posts...)
 
 	fmt.Printf("Blog post received. Now showing %d posts\n", len(posts))
 
